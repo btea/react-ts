@@ -2,10 +2,10 @@ import * as types from '../action-types'
 
 // 定义两个接口，分别约束add和subtract的type类型
 export interface ADD{
-    type: typeof types.ADD
+    type: typeof types.ADD2
 }
 export interface SUBTRACT{
-    type: typeof types.SUBTRACT
+    type: typeof types.SUBTRACT2
 }
 
 // 再导出一个type
@@ -21,19 +21,19 @@ export default {
     add():ADD{
         // 需要返回一个action对象
         // type为动作的类型
-        return {type: types.ADD}
+        return {type: types.ADD2}
     },
     subtract():SUBTRACT{
         // 需要返回一个action对象
         // type为动作的类型
-        return {type: types.SUBTRACT}
+        return {type: types.SUBTRACT2}
     },
     // 一秒后才执行这个行为
     addAsync():any{
         return function(dispatch: any, getState: any){
             setTimeout(function(){
                 // 当1秒过后，会执行dispatch，派发出去，然后改变仓库的状态
-                dispatch({type: types.ADD})
+                dispatch({type: types.ADD2})
             },1000);
         }
     }
