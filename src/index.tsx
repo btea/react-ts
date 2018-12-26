@@ -9,7 +9,8 @@ import store from './store'
 // 路由的容器：HashRouter as Router
 // 路由的规格：Route
 // Link组件
-import {HashRouter as Router, Route, Link} from 'react-router-dom';
+// 当把HashRouter变成BrowserRouter，则地址栏不会出现hash符号'#'，这样会导致一个问题，直接访问index以外的路由地址会报错
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import CounterComponent from './components/Counter';
 import CounterComponent2 from './components/Counter2';
 
