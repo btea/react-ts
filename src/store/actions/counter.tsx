@@ -1,4 +1,5 @@
 import * as types from '../action-types'
+import history  from '../../history';
 
 // 定义两个接口，分别约束add和subtract的type类型
 export interface ADD{
@@ -7,13 +8,15 @@ export interface ADD{
 export interface SUBTRACT{
     type: typeof types.SUBTRACT
 }
-
+export interface GOTO{
+    type: typeof types.GOTO
+}
 // 再导出一个type
 // type用来给类型起别名
 // 这个actions里是一个对象，会有很多函数，每个函数都会返回一个action
 // 而 ./store/reducers/index.tsx 中的action会是下面某一个函数的返回值
 
-export type Action = ADD | SUBTRACT;
+export type Action = ADD | SUBTRACT | GOTO;
 
 // 把上面定义好的接口作用于下面
 // 约束返回值的类型
@@ -35,6 +38,14 @@ export default {
                 // 当1秒过后，会执行dispatch，派发出去，然后改变仓库的状态
                 dispatch({type: types.ADD})
             },1000);
+        }
+    },
+    goto(str:string):any{
+        return function(dispatch: any){
+            history.push({pathname: str});
+            console.log(history);
+            console.log(dispatch);
+            dispatch({type: types.GOTO});
         }
     }
 }

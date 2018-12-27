@@ -6,6 +6,7 @@ import { Action } from '../actions/counter'
 // 引入action动作行为的常量
 import * as types from '../action-types'
 
+import history from '../../history'
 // 给number赋予默认值
 let initState:Counter = {number: 0};
 // 接口写在state：Store
@@ -21,6 +22,9 @@ export default function(state: Counter = initState, action: Action){
         case types.SUBTRACT:
             // 当action的行为是SUBTRACT的时候，给number减1
             return {number: state.number - 1}
+            break;
+        case types.GOTO:
+            return state;
             break;
         default:
             // 当没有匹配到则返回原本的state

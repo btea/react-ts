@@ -16,21 +16,24 @@ interface IProps{
     number: number,
     add: any,
     subtract: any,
-    addAsync: any
+    addAsync: any,
     // add 和 subtract都是函数
+    goto: any
 }
 
 class CounterComponent extends React.Component<IProps>{
     render(){
         // 利用解构赋值取出
         // 这里比如和IProps保持一致，不对应则会报错，因为接口约束了必须这样
-        let {number, add, subtract, addAsync} = this.props;
+        let {number, add, subtract, addAsync, goto} = this.props;
         return (
             <div>
                 <p>{number}</p><br/>
                 <button onClick={add}>+</button><br/>
                 <button onClick={subtract}>-</button><br/>
-                <button onClick={addAsync}>异步加1</button>
+                <button onClick={addAsync}>异步加1</button><br />
+                {/* 增加一个按钮,并且点击的时候执行goto方法实现跳转 */}
+                <button onClick={()=>goto('/counter2')}>跳转到/counter2</button>
             </div>
         )
     }
